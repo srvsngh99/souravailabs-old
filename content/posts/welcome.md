@@ -5,8 +5,14 @@ draft: false
 tags: ["introduction", "testing", "AI"]
 ---
 
-# Welcome to Sourav AI Labs
+After 10 years as an SDET, I've decided to start this blog to share knowledge and insights from the trenches of software testing and automation.
 
-After 10 years as an SDET, I'm starting this blog to share insights on testing, automation, AI, and everything in between.
+## What to Expect
 
-Stay tuned for deep dives into test automation frameworks, AI testing strategies, and practical engineering solutions.
+I'll be writing about:
+- Test automation frameworks and patterns
+- AI in software testing
+- Quality engineering practices
+- Real-world testing challenges and solutions
+
+Stay tuned for practical, experience-driven content!
