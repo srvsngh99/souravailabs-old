@@ -28,11 +28,11 @@ params:
 
   socialIcons:
     - name: github
-      url: "https://github.com/yourusername"
+      url: "https://github.com/srvsngh99"
     - name: linkedin
-      url: "https://linkedin.com/in/yourprofile"
+      url: "https://linkedin.com/in/srv-sngh""
     - name: youtube
-      url: "https://youtube.com/@yourchannel"
+      url: "https://youtube.com/@SouravAILabs"
 
 menu:
   main:
