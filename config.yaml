@@ -62,8 +62,8 @@ params:
     location: "Bangalore, India"
     image: "/images/profile.jpg"
     imageAlt: "Sourav profile photo"
-    imagePosition: "50% 55%"
-    imageScale: "0.90"
+    imagePosition: "50% 52%"
+    imageScale: "0.84"
 
   social:
     github: "https://github.com/srvsngh99"
@@ -86,7 +86,7 @@ params:
     heading: "Videos"
     subtitle: "Walkthroughs, applied testing ideas, and updates from my public GenAI learning journey."
     embedTitle: "Latest videos from Sourav AI Labs"
-    embedUrl: "https://www.youtube-nocookie.com/embed?listType=user_uploads&list=SouravAILabs"
+    embedUrl: "https://www.youtube.com/embed?listType=search&list=SouravAILabs"
     links:
       - label: "YouTube channel"
         url: "https://www.youtube.com/@SouravAILabs"
