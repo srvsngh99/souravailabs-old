@@ -30,12 +30,11 @@
   <aside class="hero-profile">
     <div class="hero-profile-photo">
       {{ with .Site.Params.profile.image }}
-      {{ $imagePosition := default "50% 50%" $.Site.Params.profile.imagePosition }}
-      {{ $imageScale := default "1" $.Site.Params.profile.imageScale }}
+      {{ $imageCropTop := default "10%" $.Site.Params.profile.imageCropTop }}
       <img
         src="{{ . | relURL }}"
         alt="{{ default "Sourav profile photo" $.Site.Params.profile.imageAlt }}"
-        style="object-position: {{ $imagePosition }}; --profile-image-scale: {{ $imageScale }};"
+        style="--profile-image-crop-top: {{ $imageCropTop }};"
       >
       {{ else }}
       <div class="hero-profile-fallback">SA</div>
