@@ -62,7 +62,8 @@ params:
     location: "Bangalore, India"
     image: "/images/profile.jpg"
     imageAlt: "Sourav profile photo"
-    imagePosition: "50% 58%"
+    imagePosition: "50% 55%"
+    imageScale: "0.90"
 
   social:
     github: "https://github.com/srvsngh99"

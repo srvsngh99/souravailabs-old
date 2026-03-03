@@ -30,10 +30,12 @@
   <aside class="hero-profile">
     <div class="hero-profile-photo">
       {{ with .Site.Params.profile.image }}
+      {{ $imagePosition := default "50% 50%" $.Site.Params.profile.imagePosition }}
+      {{ $imageScale := default "1" $.Site.Params.profile.imageScale }}
       <img
         src="{{ . | relURL }}"
         alt="{{ default "Sourav profile photo" $.Site.Params.profile.imageAlt }}"
-        {{ with $.Site.Params.profile.imagePosition }}style="object-position: {{ . }};"{{ end }}
+        style="object-position: {{ $imagePosition }}; --profile-image-scale: {{ $imageScale }};"
       >
       {{ else }}
       <div class="hero-profile-fallback">SA</div>

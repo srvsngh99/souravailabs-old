@@ -429,6 +429,8 @@ html[data-theme="dark"] .theme-icon-moon {
   height: 100%;
   object-fit: cover;
   object-position: 50% 50%;
+  transform: scale(var(--profile-image-scale, 1));
+  transform-origin: center;
   display: block;
 }
 
