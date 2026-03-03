@@ -2,6 +2,7 @@
 {{ $posts := (where .Site.RegularPages "Section" "posts").ByDate.Reverse }}
 {{ $learnDocs := (where .Site.RegularPages "Section" "learn").ByDate.Reverse }}
 {{ $newsletter := .Site.Params.newsletter }}
+{{ $videos := .Site.Params.videos }}
 {{ $newsletterAction := $newsletter.formAction }}
 {{ if and (eq $newsletter.provider "buttondown") $newsletter.buttondownUsername }}
   {{ $newsletterAction = printf "https://buttondown.com/api/emails/embed-subscribe/%s" $newsletter.buttondownUsername }}
@@ -18,8 +19,8 @@
   <article class="hero-copy">
     <p class="eyebrow">Blog</p>
     <h1>{{ .Site.Params.brand.title }}</h1>
-    <p class="hero-lede">Product notes, testing playbooks, and grounded AI engineering practices.</p>
-    <p class="hero-body">This space combines practical implementation details with real-world learning experiences. The writing is focused on usable systems, not hype.</p>
+    <p class="hero-lede">{{ .Site.Params.brand.tagline }}</p>
+    <p class="hero-body">{{ .Site.Params.brand.summary }}</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="{{ "/posts/" | relURL }}">Read latest posts</a>
       <a class="btn btn-outline" href="{{ "/learn/" | relURL }}">Explore learning docs</a>
@@ -29,7 +30,11 @@
   <aside class="hero-profile">
     <div class="hero-profile-photo">
       {{ with .Site.Params.profile.image }}
-      <img src="{{ . | relURL }}" alt="{{ default "Sourav profile photo" $.Site.Params.profile.imageAlt }}">
+      <img
+        src="{{ . | relURL }}"
+        alt="{{ default "Sourav profile photo" $.Site.Params.profile.imageAlt }}"
+        {{ with $.Site.Params.profile.imagePosition }}style="object-position: {{ . }};"{{ end }}
+      >
       {{ else }}
       <div class="hero-profile-fallback">SA</div>
       {{ end }}
@@ -258,6 +263,45 @@
     <p class="muted">Set <code>params.newsletter.buttondownUsername</code> in <code>config.yaml</code> to activate live subscriptions.</p>
     {{ end }}
   </form>
+</section>
+{{ end }}
+
+{{ if $videos.enabled }}
+<section class="video-section reveal" id="videos">
+  <div class="section-head">
+    <h2>{{ default "Videos" $videos.heading }}</h2>
+    {{ with .Site.Params.social.youtube }}
+    <a href="{{ . }}" target="_blank" rel="noreferrer">Open YouTube</a>
+    {{ end }}
+  </div>
+
+  <p class="video-subtitle">{{ default "Applied insights in video format." $videos.subtitle }}</p>
+
+  <div class="video-layout">
+    <article class="video-embed-card">
+      <div class="video-frame-wrap">
+        <iframe
+          src="{{ $videos.embedUrl }}"
+          title="{{ default "YouTube video stream" $videos.embedTitle }}"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </article>
+
+    <aside class="video-links-card">
+      <p class="eyebrow">Watch + Follow</p>
+      <h3>Where to watch my work</h3>
+      <p>Video explainers on AI, testing systems, and execution lessons from real projects.</p>
+      <div class="video-links-row">
+        {{ range $videos.links }}
+        <a class="btn btn-outline" href="{{ .url }}" target="_blank" rel="noreferrer">{{ .label }}</a>
+        {{ end }}
+      </div>
+    </aside>
+  </div>
 </section>
 {{ end }}
 

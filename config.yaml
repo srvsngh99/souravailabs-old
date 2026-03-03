@@ -33,31 +33,36 @@ menu:
       name: Learn
       url: /learn/
       weight: 25
+    - identifier: videos
+      name: Videos
+      url: /#videos
+      weight: 28
     - identifier: about
       name: About
       url: /about/
       weight: 30
 
 params:
-  description: "Software testing, AI, and engineering insights with a practical learning library."
+  description: "Lead SDET at CRED sharing AI testing systems, quality engineering strategy, and a public 52-week GenAI learning journey."
   author: "Sourav"
 
   brand:
     kicker: "Talk About Me"
     title: "Sourav AI Labs"
-    tagline: "I build reliable software at the intersection of Quality Engineering and AI."
-    summary: "I am Sourav, an SDET with 10+ years of experience in test automation, platform quality, and modern AI workflows. This site is my public notebook for builders who want practical systems that scale."
+    tagline: "Lead SDET in the Payments Platform team at CRED, building reliable software at the intersection of Quality Engineering and GenAI."
+    summary: "I am Sourav Singh, based in Bangalore, India. I lead quality engineering outcomes for high-scale products, and I am documenting a 52-week public GenAI testing journey with practical lessons teams can apply immediately."
     mission:
-      - "Share practical engineering playbooks from real projects"
-      - "Document AI + testing workflows with clear tradeoffs"
-      - "Build a recognizable personal brand around reliability"
+      - "Publish practical testing + AI implementation playbooks from real delivery environments"
+      - "Document my 52-week GenAI testing journey with weekly execution notes and artifacts"
+      - "Share lessons for teams that need release speed without compromising trust"
 
   profile:
-    role: "SDET | AI + Quality Engineering"
-    experience: "10+ years"
-    location: "United States"
+    role: "Lead SDET, Payments Platform @ CRED | Quality Engineering + GenAI Testing"
+    experience: "10+ years in quality engineering"
+    location: "Bangalore, India"
     image: "/images/profile.jpg"
     imageAlt: "Sourav profile photo"
+    imagePosition: "50% 58%"
 
   social:
     github: "https://github.com/srvsngh99"
@@ -74,6 +79,20 @@ params:
   learn:
     title: "Learning Library"
     subtitle: "Practical docs and notes you can read online."
+
+  videos:
+    enabled: true
+    heading: "Videos"
+    subtitle: "Walkthroughs, applied testing ideas, and updates from my public GenAI learning journey."
+    embedTitle: "Latest videos from Sourav AI Labs"
+    embedUrl: "https://www.youtube-nocookie.com/embed?listType=user_uploads&list=SouravAILabs"
+    links:
+      - label: "YouTube channel"
+        url: "https://www.youtube.com/@SouravAILabs"
+      - label: "YouTube playlists"
+        url: "https://www.youtube.com/@SouravAILabs/playlists"
+      - label: "GenAI Testing Journey repo"
+        url: "https://github.com/srvsngh99/genai-testing-journey"
 
   newsletter:
     enabled: true
