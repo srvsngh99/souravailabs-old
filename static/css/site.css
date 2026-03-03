@@ -416,6 +416,7 @@ html[data-theme="dark"] .theme-icon-moon {
 
 .hero-profile-photo {
   width: 100%;
+  aspect-ratio: 4 / 3;
   border-radius: var(--radius-md);
   overflow: hidden;
   background: linear-gradient(150deg, #efece3, #e2ddd1);
@@ -425,10 +426,9 @@ html[data-theme="dark"] .theme-icon-moon {
 
 .hero-profile-photo img {
   width: 100%;
-  height: auto;
-  object-fit: contain;
-  object-position: center top;
-  transform: translateY(calc(-1 * var(--profile-image-crop-top, 10%)));
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--profile-image-position, 50% 62%);
   display: block;
 }
 
