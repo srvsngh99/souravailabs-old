@@ -1,5 +1,4 @@
 public/
 .hugo_build.lock
-public/
-.hugo_build.lock
 resources/
+.site-implementation.md
