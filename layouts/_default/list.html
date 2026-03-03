@@ -1,0 +1,128 @@
+{{ define "main" }}
+{{ $posts := .Pages.ByDate.Reverse }}
+{{ $tones := slice "sage" "terracotta" "teal" "rose" "beige" "lavender" }}
+{{ $categoryTabs := slice "all" }}
+{{ range $name, $_ := .Site.Taxonomies.tags }}
+  {{ $categoryTabs = $categoryTabs | append (urlize $name) }}
+{{ end }}
+
+<section class="page-intro reveal">
+  <p class="eyebrow">Blog</p>
+  <h1>{{ .Title }}</h1>
+  {{ with .Content }}<p class="intro-body">{{ . | plainify }}</p>{{ else }}<p class="intro-body">Recent writing and implementation notes.</p>{{ end }}
+</section>
+
+<section class="category-tabs reveal" aria-label="Categories">
+  {{ range first 8 $categoryTabs }}
+  <button
+    class="tab-chip {{ if eq . "all" }}is-active{{ end }}"
+    type="button"
+    data-category-tab="{{ . }}"
+  >
+    {{ if eq . "all" }}All{{ else }}{{ replace . "-" " " | title }}{{ end }}
+  </button>
+  {{ end }}
+</section>
+
+<section class="blog-hub reveal" data-blog-hub>
+  <aside class="filter-sidebar">
+    <h2>Filters</h2>
+
+    <div class="filter-group">
+      <label for="sort-by-posts">Sort by</label>
+      <select id="sort-by-posts" data-sort-control>
+        <option value="newest">Newest</option>
+        <option value="a-z">Alphabetically A-Z</option>
+        <option value="z-a">Alphabetically Z-A</option>
+      </select>
+    </div>
+
+    <fieldset class="filter-group">
+      <legend>Category</legend>
+      {{ range first 8 $categoryTabs }}
+      {{ if ne . "all" }}
+      <label class="check-row"><input type="checkbox" data-filter-group="category" value="{{ . }}"><span>{{ replace . "-" " " | title }}</span></label>
+      {{ end }}
+      {{ end }}
+    </fieldset>
+
+    <button class="btn btn-outline filter-reset" type="button" data-reset-filters>Reset filters</button>
+  </aside>
+
+  <div class="blog-hub-main">
+    <div class="blog-hub-toolbar">
+      <label class="search-wrap" for="blog-search-posts">
+        <span class="sr-only">Search posts</span>
+        <input id="blog-search-posts" type="search" placeholder="Search" data-search-control>
+      </label>
+
+      <div class="view-toggle" role="group" aria-label="View mode">
+        <button type="button" class="is-active" data-view-toggle="grid">Grid</button>
+        <button type="button" data-view-toggle="list">List</button>
+      </div>
+    </div>
+
+    <p class="results-count" data-results-count>{{ len $posts }} posts</p>
+
+    <div class="blog-results" data-results-view="grid">
+      <div class="blog-grid" data-blog-grid>
+        {{ range $i, $post := $posts }}
+        {{ $tone := index $tones (mod $i (len $tones)) }}
+        {{ $tags := "" }}
+        {{ with $post.Params.tags }}{{ $tags = delimit (apply . "urlize" ".") " " }}{{ end }}
+        <article
+          class="blog-card"
+          data-post-item
+          data-post-id="post-list-{{ $i }}"
+          data-title="{{ lower ($post.Title | plainify) }}"
+          data-summary="{{ lower (($post.Description | default $post.Summary) | plainify) }}"
+          data-date="{{ $post.Date.Unix }}"
+          data-category="{{ $tags }}"
+          data-product="{{ with $post.Params.product }}{{ urlize . }}{{ end }}"
+          data-usecase="{{ with $post.Params.use_case }}{{ urlize . }}{{ end }}"
+        >
+          <a class="blog-card-link" href="{{ $post.RelPermalink }}">
+            <div class="feature-art tone-{{ $tone }}" aria-hidden="true">
+              <span class="line line-a"></span>
+              <span class="line line-b"></span>
+              <span class="line line-c"></span>
+            </div>
+            <div class="blog-card-body">
+              <p class="post-date">{{ $post.Date.Format "Jan 02, 2006" }}</p>
+              <h3>{{ $post.Title }}</h3>
+              {{ with $post.Description }}<p>{{ . }}</p>{{ else }}<p>{{ $post.Summary }}</p>{{ end }}
+            </div>
+          </a>
+        </article>
+        {{ else }}
+        <article class="blog-card empty-state"><p>No posts yet.</p></article>
+        {{ end }}
+      </div>
+
+      <div class="blog-list" data-blog-list>
+        {{ range $i, $post := $posts }}
+        {{ $tags := "" }}
+        {{ with $post.Params.tags }}{{ $tags = delimit (apply . "urlize" ".") " " }}{{ end }}
+        <article
+          class="blog-row"
+          data-post-item
+          data-post-id="post-row-list-{{ $i }}"
+          data-title="{{ lower ($post.Title | plainify) }}"
+          data-summary="{{ lower (($post.Description | default $post.Summary) | plainify) }}"
+          data-date="{{ $post.Date.Unix }}"
+          data-category="{{ $tags }}"
+          data-product="{{ with $post.Params.product }}{{ urlize . }}{{ end }}"
+          data-usecase="{{ with $post.Params.use_case }}{{ urlize . }}{{ end }}"
+        >
+          <a href="{{ $post.RelPermalink }}">
+            <h3>{{ $post.Title }}</h3>
+            {{ with $post.Description }}<p>{{ . }}</p>{{ else }}<p>{{ $post.Summary }}</p>{{ end }}
+            <p class="post-date">{{ $post.Date.Format "Jan 02, 2006" }}</p>
+          </a>
+        </article>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

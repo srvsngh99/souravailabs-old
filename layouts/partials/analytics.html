@@ -1,0 +1,9 @@
+{{ $analytics := .Site.Params.analytics }}
+{{ if $analytics }}
+  {{ if and (eq $analytics.provider "goatcounter") $analytics.goatcounterCode }}
+  <script data-goatcounter="https://{{ $analytics.goatcounterCode }}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+  {{ end }}
+  {{ if and (eq $analytics.provider "plausible") $analytics.domain }}
+  <script defer data-domain="{{ $analytics.domain }}" src="https://plausible.io/js/script.js"></script>
+  {{ end }}
+{{ end }}

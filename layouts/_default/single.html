@@ -1,0 +1,65 @@
+{{ define "main" }}
+<section class="article-breadcrumb reveal">
+  <a href="{{ "/posts/" | relURL }}">Blog</a>
+  <span>/</span>
+  <span>{{ .Title }}</span>
+</section>
+
+<article class="article-shell reveal">
+  <div class="article-main">
+    <div class="article-mark" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="article-dek">{{ . }}</p>{{ end }}
+
+    <div class="article-content">
+      {{ .Content }}
+    </div>
+  </div>
+
+  <aside class="article-meta">
+    <div class="meta-block">
+      <p class="meta-label">Category</p>
+      {{ with .Params.tags }}
+      {{ range . }}
+      <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+      {{ end }}
+      {{ else }}
+      <span>General</span>
+      {{ end }}
+    </div>
+
+    {{ with .Params.product }}
+    <div class="meta-block">
+      <p class="meta-label">Product</p>
+      <span>{{ . }}</span>
+    </div>
+    {{ end }}
+
+    {{ with .Params.use_case }}
+    <div class="meta-block">
+      <p class="meta-label">Use case</p>
+      <span>{{ . }}</span>
+    </div>
+    {{ end }}
+
+    <div class="meta-block">
+      <p class="meta-label">Date</p>
+      <span>{{ .Date.Format "January 2, 2006" }}</span>
+    </div>
+
+    <div class="meta-block">
+      <p class="meta-label">Reading time</p>
+      <span>{{ .ReadingTime }} min</span>
+    </div>
+
+    <div class="meta-block">
+      <p class="meta-label">Share</p>
+      <button class="copy-link-btn" type="button" data-copy-link="{{ .Permalink }}">Copy link</button>
+    </div>
+  </aside>
+</article>
+{{ end }}

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () {
+      try {
+        var storedTheme = localStorage.getItem("site-theme");
+        var systemPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = storedTheme || (systemPrefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (err) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  {{ $pageTitle := cond .IsHome .Site.Title (printf "%s | %s" .Title .Site.Title) }}
+  <title>{{ $pageTitle }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ "css/site.css" | relURL }}">
+  {{ with .OutputFormats.Get "RSS" }}
+  <link rel="alternate" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $.Site.Title }}">
+  {{ end }}
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="{{ "/" | relURL }}">
+          <span class="brand-mark" aria-hidden="true">✶</span>
+          <span class="brand-name">{{ .Site.Params.brand.title }}</span>
+        </a>
+
+        <nav class="site-nav" aria-label="Main">
+          {{ range .Site.Menus.main }}
+          <a href="{{ .URL }}">{{ .Name }}</a>
+          {{ end }}
+        </nav>
+
+        <div class="header-actions">
+          <button
+            class="theme-toggle"
+            type="button"
+            aria-label="Toggle dark mode"
+            aria-pressed="false"
+            data-theme-toggle
+          >
+            <span class="theme-icon theme-icon-sun" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <circle cx="12" cy="12" r="4"></circle>
+                <line x1="12" y1="2.5" x2="12" y2="5.2"></line>
+                <line x1="12" y1="18.8" x2="12" y2="21.5"></line>
+                <line x1="2.5" y1="12" x2="5.2" y2="12"></line>
+                <line x1="18.8" y1="12" x2="21.5" y2="12"></line>
+                <line x1="5.1" y1="5.1" x2="7" y2="7"></line>
+                <line x1="17" y1="17" x2="18.9" y2="18.9"></line>
+                <line x1="17" y1="7" x2="18.9" y2="5.1"></line>
+                <line x1="5.1" y1="18.9" x2="7" y2="17"></line>
+              </svg>
+            </span>
+            <span class="theme-icon theme-icon-moon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M14.2 3.1a8.9 8.9 0 1 0 6.7 12.7A8.2 8.2 0 0 1 14.2 3.1Z"></path>
+              </svg>
+            </span>
+          </button>
+          <a class="nav-btn nav-btn-ghost" href="{{ "/about/" | relURL }}">About</a>
+          <a class="nav-btn nav-btn-primary" href="{{ "/#subscribe" | relURL }}">Blog alerts</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="site-main">
+      {{ block "main" . }}{{ end }}
+    </main>
+
+    <footer class="site-footer" id="footer">
+      <p>&copy; {{ now.Year }} {{ .Site.Params.brand.title }}</p>
+      <div class="footer-links">
+        {{ with .Site.Params.social.github }}<a href="{{ . }}" target="_blank" rel="noreferrer">GitHub</a>{{ end }}
+        {{ with .Site.Params.social.linkedin }}<a href="{{ . }}" target="_blank" rel="noreferrer">LinkedIn</a>{{ end }}
+        {{ with .Site.Params.social.youtube }}<a href="{{ . }}" target="_blank" rel="noreferrer">YouTube</a>{{ end }}
+      </div>
+    </footer>
+  </div>
+
+  <script src="{{ "js/blog-ui.js" | relURL }}" defer></script>
+  {{ partial "analytics.html" . }}
+</body>
+</html>

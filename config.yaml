@@ -1,46 +1,103 @@
 baseURL: "https://souravailabs.ai/"
+languageCode: "en-us"
 title: "Sourav AI Labs"
-theme: "PaperMod"
+enableRobotsTXT: true
+pagination:
+  pagerSize: 8
+summaryLength: 32
 
-params:
-  env: production
-  title: "Sourav AI Labs"
-  description: "Tech insights from an SDET with 10 years of experience in testing, automation, and AI"
-  author: "Sourav"
-  
-  defaultTheme: dark
-  ShowReadingTime: true
-  ShowShareButtons: true
-  ShowPostNavLinks: true
-  ShowBreadCrumbs: true
-  ShowCodeCopyButtons: true
-  ShowRssButtonInSectionTermList: true
-  
-  profileMode:
-    enabled: true
-    title: "Sourav AI Labs"
-    subtitle: "because ai needs a human touch"
-    buttons:
-      - name: Blog
-        url: posts
-      - name: About
-        url: about
+outputs:
+  home:
+    - HTML
+    - RSS
 
-  socialIcons:
-    - name: github
-      url: "https://github.com/srvsngh99"
-    - name: linkedin
-      url: "https://linkedin.com/in/srv-sngh"
-    - name: youtube
-      url: "https://youtube.com/@SouravAILabs"
+permalinks:
+  posts: "/posts/:slug/"
+  learn: "/learn/:slug/"
+
+taxonomies:
+  tag: tags
+  category: categories
 
 menu:
   main:
-    - identifier: posts
-      name: Posts
-      url: /posts/
+    - identifier: home
+      name: Home
+      url: /
       weight: 10
+    - identifier: posts
+      name: Blog
+      url: /posts/
+      weight: 20
+    - identifier: learn
+      name: Learn
+      url: /learn/
+      weight: 25
     - identifier: about
       name: About
       url: /about/
-      weight: 20
+      weight: 30
+
+params:
+  description: "Software testing, AI, and engineering insights with a practical learning library."
+  author: "Sourav"
+
+  brand:
+    kicker: "Talk About Me"
+    title: "Sourav AI Labs"
+    tagline: "I build reliable software at the intersection of Quality Engineering and AI."
+    summary: "I am Sourav, an SDET with 10+ years of experience in test automation, platform quality, and modern AI workflows. This site is my public notebook for builders who want practical systems that scale."
+    mission:
+      - "Share practical engineering playbooks from real projects"
+      - "Document AI + testing workflows with clear tradeoffs"
+      - "Build a recognizable personal brand around reliability"
+
+  profile:
+    role: "SDET | AI + Quality Engineering"
+    experience: "10+ years"
+    location: "United States"
+    image: "/images/profile.jpg"
+    imageAlt: "Sourav profile photo"
+
+  social:
+    github: "https://github.com/srvsngh99"
+    linkedin: "https://linkedin.com/in/srv-sngh"
+    youtube: "https://youtube.com/@SouravAILabs"
+
+  analytics:
+    provider: "goatcounter"
+    goatcounterCode: "souravailabs"
+    domain: ""
+    dashboardUrl: ""
+    showPublicStats: false
+
+  learn:
+    title: "Learning Library"
+    subtitle: "Practical docs and notes you can read online."
+
+  newsletter:
+    enabled: true
+    provider: "buttondown"
+    heading: "Blog Alerts"
+    blurb: "Newsletter is work in progress. For now, get notified by email whenever a new blog is published."
+    wipNote: "Upcoming newsletter themes: AI, Testing, and real-life learning experiences."
+    buttonLabel: "Notify Me On New Posts"
+    formAction: ""
+    buttondownUsername: "souravailabs"
+    formMethod: "post"
+    emailFieldName: "email"
+    sourceFieldName: "tag"
+    sourceFieldValue: "website"
+    topics:
+      - "AI"
+      - "Testing"
+      - "Real-life learning experiences"
+    spamNote: "For better inbox placement, authenticate your sender domain with SPF, DKIM, and DMARC in your provider settings."
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    codeFences: true
+    noClasses: false

@@ -1,0 +1,55 @@
+{{ define "main" }}
+<section class="article-breadcrumb reveal">
+  <a href="{{ "/learn/" | relURL }}">Learn</a>
+  <span>/</span>
+  <span>{{ .Title }}</span>
+</section>
+
+<article class="article-shell reveal">
+  <div class="article-main">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="article-dek">{{ . }}</p>{{ end }}
+
+    {{ with .Params.embed_url }}
+    <section class="doc-embed-wrap">
+      <iframe
+        class="doc-embed"
+        src="{{ . }}"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        title="{{ $.Title }}"
+      ></iframe>
+    </section>
+    {{ else }}
+    <div class="article-content">
+      {{ .Content }}
+    </div>
+    {{ end }}
+  </div>
+
+  <aside class="article-meta">
+    {{ with .Params.doc_type }}
+    <div class="meta-block">
+      <p class="meta-label">Type</p>
+      <span>{{ . }}</span>
+    </div>
+    {{ end }}
+    {{ with .Params.read_time }}
+    <div class="meta-block">
+      <p class="meta-label">Reading time</p>
+      <span>{{ . }}</span>
+    </div>
+    {{ end }}
+    {{ with .Params.source }}
+    <div class="meta-block">
+      <p class="meta-label">Source</p>
+      <span>{{ . }}</span>
+    </div>
+    {{ end }}
+    <div class="meta-block">
+      <p class="meta-label">Date</p>
+      <span>{{ .Date.Format "January 2, 2006" }}</span>
+    </div>
+  </aside>
+</article>
+{{ end }}

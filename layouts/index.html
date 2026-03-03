@@ -1,0 +1,282 @@
+{{ define "main" }}
+{{ $posts := (where .Site.RegularPages "Section" "posts").ByDate.Reverse }}
+{{ $learnDocs := (where .Site.RegularPages "Section" "learn").ByDate.Reverse }}
+{{ $newsletter := .Site.Params.newsletter }}
+{{ $newsletterAction := $newsletter.formAction }}
+{{ if and (eq $newsletter.provider "buttondown") $newsletter.buttondownUsername }}
+  {{ $newsletterAction = printf "https://buttondown.com/api/emails/embed-subscribe/%s" $newsletter.buttondownUsername }}
+{{ end }}
+{{ $newsletterConfigured := ne $newsletterAction "" }}
+{{ $topicSummary := delimit $newsletter.topics ", " }}
+{{ $tones := slice "sage" "terracotta" "teal" "rose" "beige" "lavender" }}
+{{ $categoryTabs := slice "all" }}
+{{ range $name, $_ := .Site.Taxonomies.tags }}
+  {{ $categoryTabs = $categoryTabs | append (urlize $name) }}
+{{ end }}
+
+<section class="hero-panel reveal">
+  <article class="hero-copy">
+    <p class="eyebrow">Blog</p>
+    <h1>{{ .Site.Params.brand.title }}</h1>
+    <p class="hero-lede">Product notes, testing playbooks, and grounded AI engineering practices.</p>
+    <p class="hero-body">This space combines practical implementation details with real-world learning experiences. The writing is focused on usable systems, not hype.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="{{ "/posts/" | relURL }}">Read latest posts</a>
+      <a class="btn btn-outline" href="{{ "/learn/" | relURL }}">Explore learning docs</a>
+    </div>
+  </article>
+
+  <aside class="hero-profile">
+    <div class="hero-profile-photo">
+      {{ with .Site.Params.profile.image }}
+      <img src="{{ . | relURL }}" alt="{{ default "Sourav profile photo" $.Site.Params.profile.imageAlt }}">
+      {{ else }}
+      <div class="hero-profile-fallback">SA</div>
+      {{ end }}
+    </div>
+    <p class="hero-profile-role">{{ .Site.Params.profile.role }}</p>
+    <p class="hero-profile-meta">{{ .Site.Params.profile.experience }} · {{ .Site.Params.profile.location }}</p>
+    <a class="text-link" href="{{ "/about/" | relURL }}">Read full profile</a>
+  </aside>
+</section>
+
+<section class="category-tabs reveal" aria-label="Categories">
+  {{ range first 7 $categoryTabs }}
+  <button
+    class="tab-chip {{ if eq . "all" }}is-active{{ end }}"
+    type="button"
+    data-category-tab="{{ . }}"
+  >
+    {{ if eq . "all" }}All{{ else }}{{ replace . "-" " " | title }}{{ end }}
+  </button>
+  {{ end }}
+</section>
+
+<section class="featured-section reveal">
+  <div class="section-head">
+    <h2>Featured posts</h2>
+    <a href="{{ "/posts/" | relURL }}">Browse archive</a>
+  </div>
+
+  <div class="featured-track" data-featured-track>
+    {{ range $i, $post := first 10 $posts }}
+    {{ $tone := index $tones (mod $i (len $tones)) }}
+    {{ $tags := "" }}
+    {{ with $post.Params.tags }}{{ $tags = delimit (apply . "urlize" ".") " " }}{{ end }}
+    <a
+      class="featured-card"
+      href="{{ $post.RelPermalink }}"
+      data-post-item
+      data-post-id="featured-{{ $i }}"
+      data-title="{{ lower ($post.Title | plainify) }}"
+      data-summary="{{ lower (($post.Description | default $post.Summary) | plainify) }}"
+      data-date="{{ $post.Date.Unix }}"
+      data-category="{{ $tags }}"
+      data-product="{{ with $post.Params.product }}{{ urlize . }}{{ end }}"
+      data-usecase="{{ with $post.Params.use_case }}{{ urlize . }}{{ end }}"
+    >
+      <div class="feature-art tone-{{ $tone }}" aria-hidden="true">
+        <span class="line line-a"></span>
+        <span class="line line-b"></span>
+        <span class="line line-c"></span>
+      </div>
+      <div class="featured-card-body">
+        <p class="post-date">{{ $post.Date.Format "Jan 02, 2006" }}</p>
+        <h3>{{ $post.Title }}</h3>
+      </div>
+    </a>
+    {{ end }}
+  </div>
+</section>
+
+<section class="blog-hub reveal" data-blog-hub>
+  <aside class="filter-sidebar">
+    <h2>Filters</h2>
+
+    <div class="filter-group">
+      <label for="sort-by-home">Sort by</label>
+      <select id="sort-by-home" data-sort-control>
+        <option value="newest">Newest</option>
+        <option value="a-z">Alphabetically A-Z</option>
+        <option value="z-a">Alphabetically Z-A</option>
+      </select>
+    </div>
+
+    <fieldset class="filter-group">
+      <legend>Category</legend>
+      {{ range first 8 $categoryTabs }}
+      {{ if ne . "all" }}
+      <label class="check-row">
+        <input type="checkbox" data-filter-group="category" value="{{ . }}">
+        <span>{{ replace . "-" " " | title }}</span>
+      </label>
+      {{ end }}
+      {{ end }}
+    </fieldset>
+
+    <fieldset class="filter-group">
+      <legend>Product</legend>
+      <label class="check-row"><input type="checkbox" data-filter-group="product" value="claude-enterprise"><span>Claude Enterprise</span></label>
+      <label class="check-row"><input type="checkbox" data-filter-group="product" value="claude-apps"><span>Claude apps</span></label>
+      <label class="check-row"><input type="checkbox" data-filter-group="product" value="claude-code"><span>Claude Code</span></label>
+      <label class="check-row"><input type="checkbox" data-filter-group="product" value="developer-platform"><span>Developer Platform</span></label>
+    </fieldset>
+
+    <fieldset class="filter-group">
+      <legend>Use case</legend>
+      <label class="check-row"><input type="checkbox" data-filter-group="usecase" value="agents"><span>Agents</span></label>
+      <label class="check-row"><input type="checkbox" data-filter-group="usecase" value="coding"><span>Coding</span></label>
+      <label class="check-row"><input type="checkbox" data-filter-group="usecase" value="learning"><span>Learning</span></label>
+      <label class="check-row"><input type="checkbox" data-filter-group="usecase" value="productivity"><span>Productivity</span></label>
+    </fieldset>
+
+    <button class="btn btn-outline filter-reset" type="button" data-reset-filters>Reset filters</button>
+  </aside>
+
+  <div class="blog-hub-main">
+    <div class="blog-hub-toolbar">
+      <label class="search-wrap" for="blog-search-home">
+        <span class="sr-only">Search posts</span>
+        <input id="blog-search-home" type="search" placeholder="Search" data-search-control>
+      </label>
+
+      <div class="view-toggle" role="group" aria-label="View mode">
+        <button type="button" class="is-active" data-view-toggle="grid">Grid</button>
+        <button type="button" data-view-toggle="list">List</button>
+      </div>
+    </div>
+
+    <p class="results-count" data-results-count>{{ len $posts }} posts</p>
+
+    <div class="blog-results" data-results-view="grid">
+      <div class="blog-grid" data-blog-grid>
+        {{ range $i, $post := $posts }}
+        {{ $tone := index $tones (mod $i (len $tones)) }}
+        {{ $tags := "" }}
+        {{ with $post.Params.tags }}{{ $tags = delimit (apply . "urlize" ".") " " }}{{ end }}
+        <article
+          class="blog-card"
+          data-post-item
+          data-post-id="post-{{ $i }}"
+          data-title="{{ lower ($post.Title | plainify) }}"
+          data-summary="{{ lower (($post.Description | default $post.Summary) | plainify) }}"
+          data-date="{{ $post.Date.Unix }}"
+          data-category="{{ $tags }}"
+          data-product="{{ with $post.Params.product }}{{ urlize . }}{{ end }}"
+          data-usecase="{{ with $post.Params.use_case }}{{ urlize . }}{{ end }}"
+        >
+          <a class="blog-card-link" href="{{ $post.RelPermalink }}">
+            <div class="feature-art tone-{{ $tone }}" aria-hidden="true">
+              <span class="line line-a"></span>
+              <span class="line line-b"></span>
+              <span class="line line-c"></span>
+            </div>
+            <div class="blog-card-body">
+              <p class="post-date">{{ $post.Date.Format "Jan 02, 2006" }}</p>
+              <h3>{{ $post.Title }}</h3>
+              {{ with $post.Description }}<p>{{ . }}</p>{{ else }}<p>{{ $post.Summary }}</p>{{ end }}
+            </div>
+          </a>
+        </article>
+        {{ else }}
+        <article class="blog-card empty-state"><p>No posts yet.</p></article>
+        {{ end }}
+      </div>
+
+      <div class="blog-list" data-blog-list>
+        {{ range $i, $post := $posts }}
+        {{ $tags := "" }}
+        {{ with $post.Params.tags }}{{ $tags = delimit (apply . "urlize" ".") " " }}{{ end }}
+        <article
+          class="blog-row"
+          data-post-item
+          data-post-id="row-{{ $i }}"
+          data-title="{{ lower ($post.Title | plainify) }}"
+          data-summary="{{ lower (($post.Description | default $post.Summary) | plainify) }}"
+          data-date="{{ $post.Date.Unix }}"
+          data-category="{{ $tags }}"
+          data-product="{{ with $post.Params.product }}{{ urlize . }}{{ end }}"
+          data-usecase="{{ with $post.Params.use_case }}{{ urlize . }}{{ end }}"
+        >
+          <a href="{{ $post.RelPermalink }}">
+            <h3>{{ $post.Title }}</h3>
+            {{ with $post.Description }}<p>{{ . }}</p>{{ else }}<p>{{ $post.Summary }}</p>{{ end }}
+            <p class="post-date">{{ $post.Date.Format "Jan 02, 2006" }}</p>
+          </a>
+        </article>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ if $newsletter.enabled }}
+<section class="newsletter-panel reveal" id="subscribe">
+  <div class="newsletter-copy">
+    <p class="eyebrow">Newsletter</p>
+    <h2>{{ $newsletter.heading }}</h2>
+    <p>{{ $newsletter.blurb }}</p>
+    <p class="wip-pill">{{ default "Work in progress" $newsletter.wipNote }}</p>
+    {{ if $newsletter.topics }}
+    <div class="topic-row">
+      {{ range $newsletter.topics }}
+      <span>{{ . }}</span>
+      {{ end }}
+    </div>
+    {{ end }}
+    <p id="subscribe-help" class="note">{{ $newsletter.spamNote }}</p>
+  </div>
+
+  <form class="newsletter-form" action="{{ if $newsletterConfigured }}{{ $newsletterAction }}{{ else }}#subscribe{{ end }}" method="{{ default "post" $newsletter.formMethod }}">
+    <label for="subscriber-email-home">Email address</label>
+    <input
+      id="subscriber-email-home"
+      type="email"
+      name="{{ default "email" $newsletter.emailFieldName }}"
+      required
+      autocomplete="email"
+      placeholder="you@yourbestemail.com"
+      aria-describedby="subscribe-help"
+    >
+
+    {{ if and $newsletter.sourceFieldName $newsletter.sourceFieldValue }}
+    <input type="hidden" name="{{ $newsletter.sourceFieldName }}" value="{{ $newsletter.sourceFieldValue }}">
+    {{ end }}
+
+    {{ if eq $newsletter.provider "buttondown" }}
+    <input type="hidden" name="embed" value="1">
+    {{ if $topicSummary }}
+    <input type="hidden" name="metadata__topics" value="{{ $topicSummary }}">
+    {{ end }}
+    {{ end }}
+
+    <button class="btn btn-primary" type="submit" {{ if not $newsletterConfigured }}disabled aria-disabled="true" title="Set params.newsletter.buttondownUsername in config.yaml"{{ end }}>
+      {{ default "Notify Me On New Posts" $newsletter.buttonLabel }}
+    </button>
+
+    {{ if not $newsletterConfigured }}
+    <p class="muted">Set <code>params.newsletter.buttondownUsername</code> in <code>config.yaml</code> to activate live subscriptions.</p>
+    {{ end }}
+  </form>
+</section>
+{{ end }}
+
+<section class="learn-preview reveal">
+  <div class="section-head">
+    <h2>{{ default "Learning Library" .Site.Params.learn.title }}</h2>
+    <a href="{{ "/learn/" | relURL }}">Browse all docs</a>
+  </div>
+
+  <div class="learn-preview-grid">
+    {{ range first 3 $learnDocs }}
+    <article class="learn-preview-card">
+      <p class="post-date">{{ .Date.Format "Jan 02, 2006" }}</p>
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      {{ with .Description }}<p>{{ . }}</p>{{ else }}<p>{{ .Summary }}</p>{{ end }}
+    </article>
+    {{ else }}
+    <article class="learn-preview-card"><p>No learning docs yet.</p></article>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
