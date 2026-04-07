@@ -2,42 +2,43 @@
 title: "About"
 date: 2026-02-22
 draft: false
-description: "Who is Sourav and what Sourav AI Labs stands for."
+description: "Sourav Singh is a Lead SDET at CRED bridging quality engineering and AI systems."
 ---
 
 ## Who I Am
 
-I am Sourav Singh, based in Bangalore, India, and currently working as a Lead SDET in the Payments Platform team at CRED. I focus on building high-trust engineering systems where release speed and product reliability must coexist.
+I am Sourav Singh, a Lead SDET at CRED based in Bangalore, India. I have spent 10+ years making software reliable at scale. Now I am applying that same rigour to AI systems.
 
-I have 10+ years of hands-on experience across test architecture, CI quality strategy, automation platforms, and modern AI-assisted engineering workflows.
+Most engineers treat AI as magic. I treat it as a system to be tested.
 
-## Current Focus
+## What I Believe
 
-I am running a public 52-week GenAI testing journey to document what actually works in production-minded teams:
+Quality is the missing discipline in AI engineering.
+
+AI moves fast. Models drift. Outputs are probabilistic. Most teams are shipping AI features with the same testing playbook they used for deterministic software, and it is not working.
+
+QA engineers are the most underrated people in the room when it comes to AI. They understand failure modes. They think adversarially. They care about trust, not just velocity. That is the mindset this industry needs more of.
+
+## What I Do
+
+I run a public 52-week GenAI testing journey to document what actually works when you apply quality discipline to AI systems:
 
 - Test strategy for AI-enhanced product features
-- Practical quality gates for fast-moving pipelines
-- Reliable evaluation and feedback loops for LLM-based workflows
-- Weekly notes on experiments, wins, tradeoffs, and corrections
+- Quality gates that catch model drift before users do
+- Evaluation frameworks for LLM-based workflows
+- Honest notes on what fails and why
 
-## What This Brand Represents
+## What This Site Is
 
-Sourav AI Labs is where I publish practical ideas for teams and builders:
+Sourav AI Labs is where I publish everything I learn:
 
-- Quality engineering systems that scale with product complexity
-- AI testing and automation patterns grounded in real constraints
-- CI/CD, observability, and release governance playbooks
-- Candid write-ups from execution, not theory
+- Playbooks for QA engineers navigating the AI shift
+- Systems and frameworks grounded in real production constraints
+- Ideas that help engineering leaders build AI products worth trusting
 
-## How To Work With Me
+## Connect
 
-If your team is modernizing testing, introducing AI workflows, or hardening release confidence, this site is the best place to start.
-
-- Read the latest blog posts for current thinking
-- Use the learning docs for deeper implementation guidance
-- Watch video breakdowns on YouTube for walkthrough-style learning
-
-Find me here:
+If you are building AI systems and care about quality, this site is for you.
 
 - LinkedIn: [linkedin.com/in/srv-sngh](https://www.linkedin.com/in/srv-sngh/)
 - GitHub: [github.com/srvsngh99](https://github.com/srvsngh99)

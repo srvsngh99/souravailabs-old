@@ -17,9 +17,9 @@
 
 <section class="hero-panel reveal">
   <article class="hero-copy">
-    <p class="eyebrow">Blog</p>
+    {{ with .Site.Params.brand.kicker }}<p class="eyebrow">{{ . }}</p>{{ end }}
     <h1>{{ .Site.Params.brand.title }}</h1>
-    <p class="hero-lede">{{ .Site.Params.brand.tagline }}</p>
+    {{ with .Site.Params.brand.tagline }}<p class="hero-punchline">{{ . }}</p>{{ end }}
     <p class="hero-body">{{ .Site.Params.brand.summary }}</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="{{ "/posts/" | relURL }}">Read latest posts</a>
@@ -37,7 +37,7 @@
         style="--profile-image-position: {{ $imagePosition }};"
       >
       {{ else }}
-      <div class="hero-profile-fallback">SA</div>
+      <div class="hero-profile-fallback">SS</div>
       {{ end }}
     </div>
     <p class="hero-profile-role">{{ .Site.Params.profile.role }}</p>
