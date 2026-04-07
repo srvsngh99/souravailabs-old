@@ -18,6 +18,7 @@ permalinks:
 taxonomies:
   tag: tags
   category: categories
+  series: series
 
 menu:
   main:
@@ -33,6 +34,10 @@ menu:
       name: Learn
       url: /learn/
       weight: 25
+    - identifier: journey
+      name: 52 Weeks
+      url: /journey/
+      weight: 27
     - identifier: videos
       name: Videos
       url: /#videos
@@ -43,21 +48,21 @@ menu:
       weight: 30
 
 params:
-  description: "Lead SDET at CRED sharing AI testing systems, quality engineering strategy, and a public 52-week GenAI learning journey."
-  author: "Sourav"
+  description: "Sourav Singh writes about quality engineering for AI systems. Practical insights from 10+ years in QA, applied to the AI age."
+  author: "Sourav Singh"
 
   brand:
-    kicker: "Talk About Me"
+    kicker: "Bridging Quality and AI"
     title: "Sourav AI Labs"
-    tagline: "Lead SDET in the Payments Platform team at CRED, building reliable software at the intersection of Quality Engineering and GenAI."
-    summary: "I am Sourav Singh, based in Bangalore, India. I lead quality engineering outcomes for high-scale products, and I am documenting a 52-week public GenAI testing journey with practical lessons teams can apply immediately."
+    tagline: "The missing discipline in AI engineering: Quality."
+    summary: "I am Sourav Singh. I spent 10 years making software reliable. Now I am doing the same for AI systems, and helping QA engineers lead the shift rather than survive it."
     mission:
-      - "Publish practical testing + AI implementation playbooks from real delivery environments"
-      - "Document my 52-week GenAI testing journey with weekly execution notes and artifacts"
-      - "Share lessons for teams that need release speed without compromising trust"
+      - "Show what AI-native quality engineering looks like in production"
+      - "Document a 52-week GenAI testing journey with real experiments and honest outcomes"
+      - "Help QA engineers become the most valuable person in any AI-enabled team"
 
   profile:
-    role: "Lead SDET, Payments Platform @ CRED | Quality Engineering + GenAI Testing"
+    role: "Lead SDET at CRED | Bridging Quality and AI"
     experience: "10+ years in quality engineering"
     location: "Bangalore, India"
     image: "/images/profile.jpg"
@@ -97,10 +102,10 @@ params:
   newsletter:
     enabled: true
     provider: "buttondown"
-    heading: "Blog Alerts"
-    blurb: "Newsletter is work in progress. For now, get notified by email whenever a new blog is published."
-    wipNote: "Upcoming newsletter themes: AI, Testing, and real-life learning experiences."
-    buttonLabel: "Notify Me On New Posts"
+    heading: "The Weekly Signal"
+    blurb: "Insights on testing AI systems, from someone doing it at scale. No fluff, no theory. Just what works."
+    wipNote: "Topics: AI-native quality engineering, test strategy, and real experiments from production."
+    buttonLabel: "Subscribe"
     formAction: ""
     buttondownUsername: "souravailabs"
     formMethod: "post"
