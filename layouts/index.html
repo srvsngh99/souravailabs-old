@@ -17,7 +17,7 @@
 
 <section class="hero-panel reveal">
   <article class="hero-copy">
-    <p class="eyebrow">Blog</p>
+    {{ with .Site.Params.brand.kicker }}<p class="eyebrow">{{ . }}</p>{{ end }}
     <h1>{{ .Site.Params.brand.title }}</h1>
     <p class="hero-lede">{{ .Site.Params.brand.tagline }}</p>
     <p class="hero-body">{{ .Site.Params.brand.summary }}</p>
@@ -37,7 +37,7 @@
         style="--profile-image-position: {{ $imagePosition }};"
       >
       {{ else }}
-      <div class="hero-profile-fallback">SA</div>
+      <div class="hero-profile-fallback">SS</div>
       {{ end }}
     </div>
     <p class="hero-profile-role">{{ .Site.Params.profile.role }}</p>
@@ -118,22 +118,6 @@
       </label>
       {{ end }}
       {{ end }}
-    </fieldset>
-
-    <fieldset class="filter-group">
-      <legend>Product</legend>
-      <label class="check-row"><input type="checkbox" data-filter-group="product" value="claude-enterprise"><span>Claude Enterprise</span></label>
-      <label class="check-row"><input type="checkbox" data-filter-group="product" value="claude-apps"><span>Claude apps</span></label>
-      <label class="check-row"><input type="checkbox" data-filter-group="product" value="claude-code"><span>Claude Code</span></label>
-      <label class="check-row"><input type="checkbox" data-filter-group="product" value="developer-platform"><span>Developer Platform</span></label>
-    </fieldset>
-
-    <fieldset class="filter-group">
-      <legend>Use case</legend>
-      <label class="check-row"><input type="checkbox" data-filter-group="usecase" value="agents"><span>Agents</span></label>
-      <label class="check-row"><input type="checkbox" data-filter-group="usecase" value="coding"><span>Coding</span></label>
-      <label class="check-row"><input type="checkbox" data-filter-group="usecase" value="learning"><span>Learning</span></label>
-      <label class="check-row"><input type="checkbox" data-filter-group="usecase" value="productivity"><span>Productivity</span></label>
     </fieldset>
 
     <button class="btn btn-outline filter-reset" type="button" data-reset-filters>Reset filters</button>
