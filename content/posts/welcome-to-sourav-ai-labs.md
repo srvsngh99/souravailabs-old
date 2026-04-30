@@ -2,12 +2,18 @@
 title: "Welcome To Sourav AI Labs"
 date: 2026-02-20
 draft: false
-description: "What this site covers and how often new writing will arrive."
-tags: ["introduction", "branding", "testing"]
+description: "What this site is about and what you can expect here."
+tags: ["introduction", "quality-engineering", "ai"]
 ---
 
-Sourav AI Labs is built as both a blog and a technical brand.
+Quality is the missing discipline in AI engineering.
 
-You can expect content on software quality, AI-powered engineering workflows, and practical lessons from shipping real systems. Posts are organized by date so the latest work stays easy to track.
+That is the idea this site is built around.
 
-The email list is being set up to support flexible cadence options (weekly, biweekly, or monthly) as the publishing rhythm matures.
+I am Sourav Singh, a Lead SDET at CRED with 10+ years in quality engineering. For the past year I have been testing AI systems in production, and I noticed a gap: the tools, techniques, and mindset that make software reliable are rarely applied to AI. Most teams move fast and hope for the best.
+
+This site exists to change that.
+
+Here you will find playbooks, experiments, and honest notes from my 52-week GenAI testing journey. Practical content, grounded in real constraints, written for QA engineers and engineering leaders who want to build AI products worth trusting.
+
+New posts on a regular cadence. Subscribe to get them by email.

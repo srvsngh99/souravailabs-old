@@ -1,6 +1,6 @@
 ---
 title: "Sourav AI Labs"
-description: "Lead SDET at CRED sharing AI testing systems, quality engineering strategy, and a public 52-week GenAI learning journey."
+description: "Sourav Singh writes about quality engineering for AI systems. Practical insights from 10+ years in QA, applied to the AI age."
 ---
 
-This is the public home for my writing, experiments, and engineering playbooks from Bangalore, India.
+The quality engineer's guide to the AI age. Writing, experiments, and playbooks from Bangalore, India.
