@@ -38,10 +38,14 @@ menu:
       name: 52 Weeks
       url: /journey/
       weight: 27
+    - identifier: minikrill
+      name: Mini Krill
+      url: /minikrill/
+      weight: 28
     - identifier: videos
       name: Videos
       url: /#videos
-      weight: 28
+      weight: 29
     - identifier: about
       name: About
       url: /about/
