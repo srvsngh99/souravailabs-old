@@ -65,6 +65,7 @@ Inside chat:
 | Provider switching | Ollama, Codex CLI, Claude Code, and chat switching commands |
 | Memory and preferences | What Mini Krill stores locally and how preferences follow provider switches |
 | Interfaces | Pure CLI, Telegram bot, and Discord bot setup |
+| Automation workflows | Durable reminders, file summaries, web summaries, and research |
 | Testing checklist | Commands to verify install, providers, memory, and builds |
 | Troubleshooting | PATH, Ollama, Codex login, Claude login, and memory checks |
 
@@ -75,8 +76,9 @@ The full docs live in the Mini Krill GitHub repo under `docs/`.
 - Keep a unified conversation memory across terminal chat, TUI, Telegram, and Discord.
 - Run privately with Ollama by default.
 - Switch providers inside chat without editing config files.
-- Support reminders with durable scheduling and notifications.
-- Read and summarize email through explicit user-connected mail providers.
+- Support durable local reminders and scheduled notifications.
+- Summarize local files, web pages, and research results with the active provider.
+- Keep Gmail integration on hold until OAuth verification and user-data handling are ready.
 - Stay transparent: plan first, ask approval, then act.
 
 ## Privacy Model
@@ -85,7 +87,7 @@ Mini Krill stores memory locally under `~/.mini-krill`. With Ollama, prompts sta
 
 ## Current Status
 
-Mini Krill is being hardened toward a production-ready open-source release. Until the first stable tag, treat it as an alpha project and review provider behavior before using it on sensitive workflows.
+Mini Krill is an alpha project. Review provider behavior before using it on sensitive workflows.
 
 <p>
   <a class="btn btn-primary" href="https://github.com/srvsngh99/mini-krill" target="_blank" rel="noreferrer">Open GitHub repo</a>
