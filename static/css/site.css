@@ -1779,11 +1779,16 @@ html[data-theme="dark"] .search-wrap input::placeholder {
   min-height: 260px;
   border-radius: var(--radius-sm);
   background: var(--color-code-bg);
-  color: #ff7a70;
-  overflow: auto;
+  padding: 1.5rem;
 }
 
-.minikrill-mark pre,
+.minikrill-mark img {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
 .project-ascii {
   margin: 0;
   font: 700 0.78rem/1.18 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
@@ -1832,12 +1837,15 @@ html[data-theme="dark"] .search-wrap input::placeholder {
   }
 
   .minikrill-mark {
-    min-height: 210px;
-    justify-content: flex-start;
-    padding: 1rem;
+    min-height: auto;
+    justify-content: center;
+    padding: 1.5rem;
   }
 
-  .minikrill-mark pre,
+  .minikrill-mark img {
+    max-width: 180px;
+  }
+
   .project-ascii {
     font-size: 0.68rem;
   }
