@@ -1,6 +1,10 @@
 {{ define "main" }}
 <section class="article-breadcrumb reveal">
+  {{ if eq .Section "posts" }}
   <a href="{{ "/posts/" | relURL }}">Blog</a>
+  {{ else }}
+  <a href="{{ "/" | relURL }}">Home</a>
+  {{ end }}
   <span>/</span>
   <span>{{ .Title }}</span>
 </section>
