@@ -104,8 +104,6 @@
       view: "grid",
       filters: {
         category: new Set(),
-        product: new Set(),
-        usecase: new Set(),
       },
     };
 
@@ -113,22 +111,12 @@
       var title = String(item.dataset.title || "");
       var summary = String(item.dataset.summary || "");
       var categories = splitTokens(item.dataset.category);
-      var products = splitTokens(item.dataset.product);
-      var usecases = splitTokens(item.dataset.usecase);
 
       if (state.tab !== "all" && categories.indexOf(state.tab) === -1) {
         return false;
       }
 
       if (!intersects(categories, state.filters.category)) {
-        return false;
-      }
-
-      if (!intersects(products, state.filters.product)) {
-        return false;
-      }
-
-      if (!intersects(usecases, state.filters.usecase)) {
         return false;
       }
 
@@ -232,8 +220,6 @@
         state.query = "";
         state.sort = "newest";
         state.filters.category.clear();
-        state.filters.product.clear();
-        state.filters.usecase.clear();
 
         if (searchInput) {
           searchInput.value = "";
