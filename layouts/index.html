@@ -46,6 +46,40 @@
   </aside>
 </section>
 
+<section class="minikrill-panel reveal" id="minikrill">
+  <div class="minikrill-mark" aria-hidden="true">
+<pre>        .-''''''''-.
+     .-'   .----.   '-.
+   .'    .'  __  '.    '.
+  /     /  .'oo'.  \     \
+ ;     |  /_____)   |     ;
+ |     |   / / /    |     |
+ ;     |  /_/ /__   |     ;
+  \     \    '--'  /     /
+   '.    '._    _.'    .'
+     '-.     '''     .-'
+        '-.______.-'</pre>
+  </div>
+
+  <div class="minikrill-copy">
+    <p class="eyebrow">Open source agent</p>
+    <h2>Mini Krill</h2>
+    <p class="hero-punchline">Local-first AI agent by Sourav Singh / Sourav AI Labs.</p>
+    <p>
+      Mini Krill runs with Ollama for private local use and can switch to subscription-backed
+      Codex or Claude Code through their official CLIs. It is being hardened for reminders,
+      email summaries, and unified chat memory across terminal, TUI, Telegram, and Discord.
+    </p>
+    <div class="install-strip">
+      <code>curl -fsSL https://raw.githubusercontent.com/srvsngh99/mini-krill/main/scripts/install.sh | bash</code>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="{{ "/minikrill/" | relURL }}">Explore Mini Krill</a>
+      <a class="btn btn-outline" href="https://github.com/srvsngh99/mini-krill" target="_blank" rel="noreferrer">GitHub repo</a>
+    </div>
+  </div>
+</section>
+
 <section class="category-tabs reveal" aria-label="Categories">
   {{ range first 7 $categoryTabs }}
   <button

@@ -8,6 +8,7 @@ description: "A public journey from QA engineer to AI test architect. One week a
 <div class="journey-header">
 <p>A public journey from QA engineer to AI test architect. 52 weeks, 9 hours a week, every experiment documented honestly. The goal: ship a real LLM testing framework on PyPI by week 52.</p>
 
+<!-- UPDATE when publishing a new week: set width to (N/52)*100 and update the label below -->
 <div class="journey-progress-bar"><div class="journey-progress-fill" style="width: 17.3%"></div></div>
 <p class="journey-progress-label">9 of 52 weeks complete (17%)</p>
 </div>
