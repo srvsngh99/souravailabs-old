@@ -1,7 +1,8 @@
 ---
 title: "Mini Krill Goes Open Source: Building an AI Agent Harness from Scratch"
-date: 2026-05-02
-draft: true
+date: 2026-05-01
+draft: false
+slug: "mini-krill-goes-open-source"
 description: "Mini Krill is now open source — a local-first AI agent built in Go that thinks, plans, and acts on your machine. Here's why I built it and what I learned."
 tags: ["mini-krill", "open-source", "ai-agents", "announcement", "go"]
 product: "Mini Krill"
@@ -88,7 +89,7 @@ minikrill init
 minikrill chat
 ```
 
-Runs on Linux, macOS, and Windows. Single binary. Zero dependencies.
+Runs on Linux, macOS, and Windows. Single binary. Local inference uses Ollama.
 
 The full source, docs, and issue tracker are on GitHub: [srvsngh99/mini-krill](https://github.com/srvsngh99/mini-krill)
 
