@@ -359,13 +359,6 @@ html[data-theme="dark"] .theme-icon-moon {
   padding: clamp(1.1rem, 2vw, 1.6rem);
 }
 
-.hero-lede {
-  font-size: clamp(1.1rem, 2.3vw, 1.6rem);
-  color: var(--color-dark);
-  line-height: 1.42;
-  max-width: 38ch;
-}
-
 .hero-punchline {
   font-size: clamp(1.15rem, 2.5vw, 1.75rem);
   font-weight: 600;
