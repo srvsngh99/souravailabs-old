@@ -94,12 +94,12 @@ params:
     heading: "Videos"
     subtitle: "Walkthroughs, applied testing ideas, and updates from my public GenAI learning journey."
     embedTitle: "Latest videos from Sourav AI Labs"
-    embedUrl: "https://www.youtube.com/embed?listType=search&list=SouravAILabs"
+    embedUrl: "https://www.youtube.com/embed/videoseries?list=PLuahdXdIiicjiezNkQf6X-qVAu5iLpjb8"
     links:
       - label: "YouTube channel"
         url: "https://www.youtube.com/@SouravAILabs"
       - label: "YouTube playlists"
-        url: "https://www.youtube.com/@SouravAILabs/playlists"
+        url: "https://www.youtube.com/playlist?list=PLuahdXdIiicjiezNkQf6X-qVAu5iLpjb8"
       - label: "GenAI Testing Journey repo"
         url: "https://github.com/srvsngh99/genai-testing-journey"
 
