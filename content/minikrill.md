@@ -1,6 +1,6 @@
 ---
 title: "Mini Krill"
-description: "Local-first AI agent by Sourav Singh / Sourav AI Labs, built for Ollama, Codex subscription login, Claude Code subscription login, and unified memory across interfaces."
+description: "Local-first AI agent by Sourav Singh / Sourav AI Labs. Runs privately with Ollama, supports Codex and Claude Code via official CLIs. Unified memory across CLI, TUI, Telegram, and Discord."
 date: 2026-04-30
 tags:
   - AI agents
@@ -13,22 +13,14 @@ use_case: "Productivity"
   <div>
     <p class="eyebrow">Sourav AI Labs project</p>
     <h2>Mini Krill</h2>
-    <p class="article-dek">A local-first AI agent with a crustaceous soul. Built by Sourav Singh / Sourav AI Labs.</p>
+    <p class="article-dek">A local-first AI agent with a crustaceous soul. Built by Sourav Singh / Sourav AI Labs. Inspired by Jarvis and OpenClaw.</p>
   </div>
-  <pre class="project-ascii" aria-label="Mini Krill ASCII logo">        .-''''''''-.
-     .-'   .----.   '-.
-   .'    .'  __  '.    '.
-  /     /  .'oo'.  \     \
- ;     |  /_____)   |     ;
- |     |   / / /    |     |
- ;     |  /_/ /__   |     ;
-  \     \    '--'  /     /
-   '.    '._    _.'    .'
-     '-.     '''     .-'
-        '-.______.-'</pre>
+  <img src="/images/krill_logo.png" alt="Mini Krill logo" class="project-logo" style="max-width: 200px; border-radius: 50%;">
 </section>
 
-Mini Krill is designed for people who want a practical personal agent without starting with API keys. The first-class path is local Ollama. Subscription-backed Codex and Claude Code support delegates authentication to the official CLIs, so Mini Krill does not store provider OAuth tokens.
+Mini Krill is designed for people who want a practical personal agent without starting with API keys or cloud accounts. The first-class path is local Ollama — everything stays on your machine. Subscription-backed Codex and Claude Code support delegates authentication to the official CLIs, so Mini Krill does not store provider OAuth tokens.
+
+It runs seamlessly on **Windows, Linux, and macOS** as a single binary with zero dependencies.
 
 ## Install
 
@@ -43,8 +35,8 @@ minikrill chat
 | Provider | Best for | Auth model |
 |---|---|---|
 | Ollama | Private local chat and task planning | No account required; recommended `gemma3:4b` |
-| Codex | Coding and repo-aware work | `codex login` via ChatGPT subscription; supports current CLI models such as `gpt-5.5` |
-| Claude Code | Coding, analysis, and terminal workflows | `claude auth login` via Claude subscription; supports `opus`, `sonnet`, and `haiku` aliases |
+| Codex | Coding and repo-aware work | `codex login` via ChatGPT subscription |
+| Claude Code | Coding, analysis, and terminal workflows | `claude auth login` via Claude subscription |
 
 Inside chat:
 
@@ -53,41 +45,44 @@ Inside chat:
 /use local
 /use codex
 /use claude
-/auth codex
-/auth claude
 ```
+
+## Key Features
+
+- **Plan-before-execute** — the agent shows its plan and waits for your approval before acting
+- **Unified memory** — move between CLI, TUI, Telegram, and Discord with shared continuity
+- **Personality system** — not a boring assistant, a crustaceous AI buddy with soul
+- **Plugin system** — YAML-based skill registry for extensible capabilities
+- **Health monitoring** — heartbeat, doctor diagnostics, and sonar pings
+- **TUI dashboard** — ocean-themed terminal UI with real-time status
+
+## Security & Privacy
+
+- **Local-first**: with Ollama, all data stays on your machine
+- **No telemetry**: Mini Krill never phones home or collects analytics
+- **Credential delegation**: OAuth tokens stay in the official provider CLIs
+- **Untrusted content sandboxing**: external content is marked as data-only, preventing prompt injection
+- **SSRF protection**: HTTP client blocks requests to private/loopback addresses
+
+All data is stored locally in `~/.mini-krill/`.
 
 ## Documentation
 
 | Guide | Covers |
 |---|---|
-| [Install and setup](https://github.com/srvsngh99/mini-krill/blob/main/docs/INSTALL.md) | Mandatory provider choice, optional integrations, Windows/macOS/Linux setup |
+| [Install and setup](https://github.com/srvsngh99/mini-krill/blob/main/docs/INSTALL.md) | Provider choice, integrations, Windows/macOS/Linux setup |
 | [Provider switching](https://github.com/srvsngh99/mini-krill/blob/main/docs/PROVIDERS.md) | Ollama, Codex CLI, Claude Code, and chat switching commands |
-| [Memory and preferences](https://github.com/srvsngh99/mini-krill/blob/main/docs/MEMORY.md) | What Mini Krill stores locally and how preferences follow provider switches |
-| [Interfaces](https://github.com/srvsngh99/mini-krill/blob/main/docs/INTERFACES.md) | Pure CLI, Telegram bot, and Discord bot setup |
-| [Automation workflows](https://github.com/srvsngh99/mini-krill/blob/main/docs/AUTOMATION.md) | Durable reminders, file summaries, web summaries, and research |
+| [Memory and preferences](https://github.com/srvsngh99/mini-krill/blob/main/docs/MEMORY.md) | Local storage and how preferences follow provider switches |
+| [Interfaces](https://github.com/srvsngh99/mini-krill/blob/main/docs/INTERFACES.md) | Telegram bot, CLI, and Discord bot setup |
+| [Automation workflows](https://github.com/srvsngh99/mini-krill/blob/main/docs/AUTOMATION.md) | Reminders, file summaries, web summaries, and research |
 | [Testing checklist](https://github.com/srvsngh99/mini-krill/blob/main/docs/TESTING.md) | Commands to verify install, providers, memory, and builds |
 | [Troubleshooting](https://github.com/srvsngh99/mini-krill/blob/main/docs/TROUBLESHOOTING.md) | PATH, Ollama, Codex login, Claude login, and memory checks |
 
 The full docs live in the Mini Krill GitHub repo under `docs/`.
 
-## What It Is Being Built To Do
-
-- Keep a unified conversation memory across terminal chat, TUI, Telegram, and Discord.
-- Run privately with Ollama by default.
-- Switch providers inside chat without editing config files.
-- Support durable local reminders and scheduled notifications.
-- Summarize local files, web pages, and research results with the active provider.
-- Keep Gmail integration on hold until OAuth verification and user-data handling are ready.
-- Stay transparent: plan first, ask approval, then act.
-
-## Privacy Model
-
-Mini Krill stores memory locally under `~/.mini-krill`. With Ollama, prompts stay on your machine. With Codex or Claude Code, prompts go through the official provider CLI selected by the user. No telemetry is planned.
-
 ## Current Status
 
-Mini Krill is an alpha project. Review provider behavior before using it on sensitive workflows.
+Mini Krill v0.1.0 is open source under the MIT license. It is actively maintained and being hardened for production workflows.
 
 <p>
   <a class="btn btn-primary" href="https://github.com/srvsngh99/mini-krill" target="_blank" rel="noreferrer">Open GitHub repo</a>
