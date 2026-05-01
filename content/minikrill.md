@@ -20,7 +20,7 @@ use_case: "Productivity"
 
 Mini Krill is designed for people who want a practical personal agent without starting with API keys or cloud accounts. The first-class path is local Ollama — everything stays on your machine. Subscription-backed Codex and Claude Code support delegates authentication to the official CLIs, so Mini Krill does not store provider OAuth tokens.
 
-It runs seamlessly on **Windows, Linux, and macOS** as a single binary with zero dependencies.
+It runs on **Windows, Linux, and macOS** as a single binary. Local inference uses Ollama.
 
 ## Install
 
