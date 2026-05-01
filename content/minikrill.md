@@ -61,13 +61,13 @@ Inside chat:
 
 | Guide | Covers |
 |---|---|
-| Install and setup | Mandatory provider choice, optional integrations, Windows/macOS/Linux setup |
-| Provider switching | Ollama, Codex CLI, Claude Code, and chat switching commands |
-| Memory and preferences | What Mini Krill stores locally and how preferences follow provider switches |
-| Interfaces | Pure CLI, Telegram bot, and Discord bot setup |
-| Automation workflows | Durable reminders, file summaries, web summaries, and research |
-| Testing checklist | Commands to verify install, providers, memory, and builds |
-| Troubleshooting | PATH, Ollama, Codex login, Claude login, and memory checks |
+| [Install and setup](https://github.com/srvsngh99/mini-krill/blob/main/docs/INSTALL.md) | Mandatory provider choice, optional integrations, Windows/macOS/Linux setup |
+| [Provider switching](https://github.com/srvsngh99/mini-krill/blob/main/docs/PROVIDERS.md) | Ollama, Codex CLI, Claude Code, and chat switching commands |
+| [Memory and preferences](https://github.com/srvsngh99/mini-krill/blob/main/docs/MEMORY.md) | What Mini Krill stores locally and how preferences follow provider switches |
+| [Interfaces](https://github.com/srvsngh99/mini-krill/blob/main/docs/INTERFACES.md) | Pure CLI, Telegram bot, and Discord bot setup |
+| [Automation workflows](https://github.com/srvsngh99/mini-krill/blob/main/docs/AUTOMATION.md) | Durable reminders, file summaries, web summaries, and research |
+| [Testing checklist](https://github.com/srvsngh99/mini-krill/blob/main/docs/TESTING.md) | Commands to verify install, providers, memory, and builds |
+| [Troubleshooting](https://github.com/srvsngh99/mini-krill/blob/main/docs/TROUBLESHOOTING.md) | PATH, Ollama, Codex login, Claude login, and memory checks |
 
 The full docs live in the Mini Krill GitHub repo under `docs/`.
 
